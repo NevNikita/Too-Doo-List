@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Too_Doo_List"
-        xmlns:viewmodels="clr-namespace:Too_Doo_List.VeiwModels"
+        xmlns:viewmodels="clr-namespace:Too_Doo_List.ViewModels"
         xmlns:views="clr-namespace:Too_Doo_List.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Too-Doo List" Height="450" Width="800" Loaded="Window_Loaded" Closing="OnClose" StateChanged="OnStateChanged" IsVisibleChanged="OnIsVisibleChanged">
+    
     <Window.Resources>
         <DataTemplate x:Name="CreateTaskTemplate" DataType="{x:Type viewmodels:CreateTaskModel}">
             <views:CreateTask DataContext="{Binding}"/>
@@ -15,6 +16,13 @@
         <DataTemplate x:Name="ViewTaskTemplate" DataType="{x:Type viewmodels:ViewTaskModel}">
             <views:ViewTasks DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="TaskChangeTemplate" DataType="{x:Type viewmodels:TaskDeleteModel}">
+            <views:TaskDelete DataContext="{Binding}"/>
+        </DataTemplate>
+
+       
+
+
     </Window.Resources>
     <Grid>
         
@@ -32,7 +40,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
         <DockPanel Background="DeepSkyBlue" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
             <StackPanel>
                 <Button Content="Создать" Click="CreateTaskView_Click"/>
@@ -40,8 +48,7 @@
             </StackPanel>
         </DockPanel>
 
+        <ContentControl Content="{Binding CurrentContentVM}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="4"/>
 
-
-        <ContentControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="4" Content="{Binding}"/>
     </Grid>
 </Window>

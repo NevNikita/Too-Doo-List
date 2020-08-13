@@ -7,6 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <ListBox x:Name="TaskListBox" SelectionChanged="TaskListBox_SelectionChanged" x:FieldModifier="public" >
+            <ListBox.ItemTemplate>
+                <DataTemplate >
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="16" Text="{Binding Path = name}" HorizontalAlignment="Center" />
+                        <TextBlock FontSize="16" Text="{Binding Path = datetime}" HorizontalAlignment="Center" />
+                        <TextBlock HorizontalAlignment="Left" Margin="1604,-155,-995,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="191" Height="187"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>
