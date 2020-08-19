@@ -11,8 +11,14 @@ namespace Too_Doo_List.ViewModels
             Database database = new Database();
             MySqlCommand command = new MySqlCommand("DELETE FROM tasks WHERE datetime = @dateTime", database.getConnection());
             command.Parameters.Add("@dateTime", MySqlDbType.DateTime).Value = dateTime;
-            database.openConnect();
-            command.ExecuteNonQuery();
+            try
+            {
+                database.openConnect();
+                command.ExecuteNonQuery();
+                database.closeConnect();
+            }
+            catch { }
+
             foreach(Task task in TaskList.loadedTasks)
             {
                 if (task.datetime == dateTime)

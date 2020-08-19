@@ -22,9 +22,10 @@ namespace Too_Doo_List
 
         public static void LoadListJSON()
         {
-
-            loadedTasks = JsonConvert.DeserializeObject<List<Task>>(File.ReadAllText("tasklist.json"));
-
+            try
+            {
+                loadedTasks = JsonConvert.DeserializeObject<List<Task>>(File.ReadAllText("tasklist.json"));
+            } catch { return;}
 
             //using (FileStream fileStream = new FileStream("user.json", FileMode.OpenOrCreate))
             //{

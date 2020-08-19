@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Threading;
 using Too_Doo_List.ViewModels;
@@ -37,7 +38,8 @@ namespace Too_Doo_List
             m_notifyIcon.BalloonTipText = "The app has been minimised. Click the tray icon to show.";
             m_notifyIcon.BalloonTipTitle = "Too-Doo";
             m_notifyIcon.Text = "Too-Doo";
-            m_notifyIcon.Icon = new System.Drawing.Icon("TheAppIcon.ico");
+            Icon getIcon = Properties.Resources.Application;
+            m_notifyIcon.Icon = getIcon;
             m_notifyIcon.Click += new EventHandler(m_notifyIcon_Click);
         }
 
